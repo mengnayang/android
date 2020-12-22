@@ -4,4 +4,7 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_time">Time</string>
     <string name="title_weather">Weather</string>
+    <string name="time_start">开始</string>
+    <string name="time_stop">停止</string>
+    <string name="time_reset">重置</string>
 </resources>
