@@ -2,6 +2,6 @@
     <string name="app_name">My Application</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_time">Time</string>
     <string name="title_weather">Weather</string>
 </resources>

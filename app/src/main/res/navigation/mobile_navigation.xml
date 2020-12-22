@@ -18,10 +18,10 @@
         tools:layout="@layout/fragment_dashboard" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.example.myapplication.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/navigation_time"
+        android:name="com.example.myapplication.ui.time.TimeFragment"
+        android:label="@string/title_time"
+        tools:layout="@layout/fragment_time" />
 
     <fragment
         android:id="@+id/navigation_weather"
