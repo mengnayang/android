@@ -1,4 +1,4 @@
-package com.example.myapplication.pojo
+package com.example.myapplication.pojo.city
 
 data class CityItem(
     val area_code: String,

@@ -10,7 +10,7 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import androidx.lifecycle.Observer
 import com.example.myapplication.R
-import com.example.myapplication.pojo.CityItem
+import com.example.myapplication.pojo.city.CityItem
 import kotlinx.android.synthetic.main.fragment_weather.*
 
 class WeatherFragment : Fragment() {
