@@ -9,4 +9,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="time_color">#393733</color>
     <color name="time_bg">#45b787</color>
+    <color name="music_bg">#93d5dc</color>
 </resources>

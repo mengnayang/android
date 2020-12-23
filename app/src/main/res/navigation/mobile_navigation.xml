@@ -12,16 +12,16 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.example.myapplication.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
-
-    <fragment
         android:id="@+id/navigation_time"
         android:name="com.example.myapplication.ui.time.TimeFragment"
         android:label="@string/title_time"
         tools:layout="@layout/fragment_time" />
+
+    <fragment
+        android:id="@+id/navigation_music"
+        android:name="com.example.myapplication.ui.music.MusicFragment"
+        android:label="@string/title_music"
+        tools:layout="@layout/fragment_music" />
 
     <fragment
         android:id="@+id/navigation_weather"

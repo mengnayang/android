@@ -1,10 +1,13 @@
 <resources>
     <string name="app_name">My Application</string>
     <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
     <string name="title_time">Time</string>
+    <string name="title_music">Music</string>
     <string name="title_weather">Weather</string>
     <string name="time_start">开始</string>
     <string name="time_stop">停止</string>
     <string name="time_reset">重置</string>
+    <string name="music_start">开始播放</string>
+    <string name="music_pause">暂停播放</string>
+    <string name="music_stop">停止播放</string>
 </resources>
