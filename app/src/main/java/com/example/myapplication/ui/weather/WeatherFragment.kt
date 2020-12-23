@@ -11,7 +11,6 @@ import android.widget.ArrayAdapter
 import androidx.lifecycle.Observer
 import com.example.myapplication.R
 import com.example.myapplication.pojo.CityItem
-import com.example.myapplication.ui.WeatherFragment
 import kotlinx.android.synthetic.main.fragment_weather.*
 
 class WeatherFragment : Fragment() {
@@ -44,7 +43,7 @@ class WeatherFragment : Fragment() {
             weather_listView.setOnItemClickListener { _, _, position, _ ->
                 val cityCode = cities[position].city_code
                 // 这里必须用activity, 因为此刻处于fragment布局中
-                val intent = Intent(activity, WeatherFragment::class.java)
+                val intent = Intent(activity, WeatherInfoActivity::class.java)
                 intent.putExtra("city_code", cityCode)
                 startActivity(intent)
             }
