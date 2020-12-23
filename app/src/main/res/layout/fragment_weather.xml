@@ -8,4 +8,8 @@
     tools:context=".ui.weather.WeatherFragment">
 
 
+    <ListView
+        android:id="@+id/weather_listView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </LinearLayout>

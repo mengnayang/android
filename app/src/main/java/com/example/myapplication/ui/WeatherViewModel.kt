@@ -1,8 +1,9 @@
-package com.example.myapplication.ui.weather
+package com.example.myapplication.ui
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import com.example.myapplication.R
 import com.example.myapplication.pojo.CityItem
 import com.google.gson.Gson
@@ -11,25 +12,24 @@ import java.io.BufferedReader
 import java.io.InputStreamReader
 import kotlin.concurrent.thread
 
-// 需要获取应用上下文, 所以使用AndroidViewModel
+// 应用上下文, 需要AndroidViewModel
 class WeatherViewModel(application: Application) : AndroidViewModel(application) {
+
     // 内部使用
     private val _cities:MutableLiveData<List<CityItem>> = MutableLiveData()
 
-    // 外部调用
+    //外部调用
     val cities = _cities
 
-    // 数据初始化
     init {
         thread {
-            //获取资源文件（原始）
             val citycode = readFileFromRaw(R.raw.citycode)
             val gson = Gson()
-            val CityType = object : TypeToken<List<CityItem>>(){}.type
-            var cts:List<CityItem> = gson.fromJson(citycode, CityType)
+            val CityType = object : TypeToken<List<CityItem>>() {}.type
+            var cts: List<CityItem> = gson.fromJson(citycode, CityType)
             cts = cts.filter { it.city_code != "" }
-            // 当前位于子线程, 必须使用postValue
-            _cities.postValue((cts))
+            // 子线程, 使用postValue
+            _cities.postValue(cts)
         }
     }
 
