@@ -29,7 +29,7 @@ class WeatherViewModel(application: Application) : AndroidViewModel(application)
             var cts:List<CityItem> = gson.fromJson(citycode, CityType)
             cts = cts.filter { it.city_code != "" }
             // 当前位于子线程, 必须使用postValue
-            _cities.postValue((cts))
+            _cities.postValue(cts)
         }
     }
 
