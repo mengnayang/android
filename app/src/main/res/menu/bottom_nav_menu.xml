@@ -12,9 +12,19 @@
         android:title="@string/title_time" />
 
     <item
+        android:id="@+id/navigation_chat"
+        android:icon="@drawable/ic_chat_black_24dp"
+        android:title="@string/title_chat" />
+
+    <item
         android:id="@+id/navigation_music"
         android:icon="@drawable/ic_music_black_24dp"
         android:title="@string/title_music" />
+
+<!--    <item-->
+<!--        android:id="@+id/navigation_database"-->
+<!--        android:icon="@drawable/ic_database_black_24dp"-->
+<!--        android:title="@string/title_database" />-->
 
     <item
         android:id="@+id/navigation_weather"

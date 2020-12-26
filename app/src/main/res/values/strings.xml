@@ -2,7 +2,9 @@
     <string name="app_name">My Application</string>
     <string name="title_home">Home</string>
     <string name="title_time">Time</string>
+    <string name="title_chat">Chat</string>
     <string name="title_music">Music</string>
+    <string name="title_database">DataBase</string>
     <string name="title_weather">Weather</string>
     <string name="time_start">开始</string>
     <string name="time_stop">停止</string>
@@ -10,4 +12,16 @@
     <string name="music_start">开始播放</string>
     <string name="music_pause">暂停播放</string>
     <string name="music_stop">停止播放</string>
+    <string name="database_textView_sname">姓名:</string>
+    <string name="database_editView_sname">请输入查询的学生姓名</string>
+    <string name="database_textView_sage">年龄:</string>
+    <string name="database_editView_sage">请输入查询的年龄</string>
+    <string name="database_radio_boy">男</string>
+    <string name="database_radio_girl">女</string>
+    <string name="database_textView_sdept">系:</string>
+    <string name="database_editView_sdept">请输入查询的系名</string>
+    <string name="database_insert">Insert</string>
+    <string name="database_update">Update</string>
+    <string name="database_delete">Delete</string>
+    <string name="database_select">Select</string>
 </resources>
