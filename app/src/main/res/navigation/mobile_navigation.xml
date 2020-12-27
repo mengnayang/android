@@ -18,22 +18,16 @@
         tools:layout="@layout/fragment_time" />
 
     <fragment
-        android:id="@+id/navigation_chat"
-        android:name="com.example.myapplication.ui.chat.ChatFragment"
-        android:label="@string/title_chat"
-        tools:layout="@layout/fragment_chat" />
+        android:id="@+id/navigation_game"
+        android:name="com.example.myapplication.ui.game.GameFragment"
+        android:label="@string/title_game"
+        tools:layout="@layout/fragment_game" />
 
     <fragment
         android:id="@+id/navigation_music"
         android:name="com.example.myapplication.ui.music.MusicFragment"
         android:label="@string/title_music"
         tools:layout="@layout/fragment_music" />
-
-<!--    <fragment-->
-<!--        android:id="@+id/navigation_database"-->
-<!--        android:name="com.example.myapplication.ui.database.DataBaseFragment"-->
-<!--        android:label="@string/title_database"-->
-<!--        tools:layout="@layout/fragment_data_base" />-->
 
     <fragment
         android:id="@+id/navigation_weather"

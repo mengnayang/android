@@ -11,6 +11,6 @@
         android:type="radial"
         android:gradientRadius="120"/>
     <size
-        android:width="70dp"
-        android:height="20dp"/>
+        android:width="20dp"
+        android:height="5dp"/>
 </shape>

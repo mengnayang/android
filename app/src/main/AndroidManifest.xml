@@ -17,13 +17,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <provider
-            tools:ignore="ExportedContentProvider"
-            android:name=".ui.database.StudentContentProvider"
-            android:authorities="com.example.myapplication.ui.database.provider"
-            android:enabled="true"
-            android:exported="true"></provider>
-
         <activity android:name=".ui.weather.WeatherInfoActivity" />
         <activity
             android:name=".MainActivity"

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.game.GameFragment">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycleView1"
+        android:layout_width="match_parent"
+        android:layout_height="150dp">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@color/colorAccent"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/Score"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:text="@string/Score"
+            android:textColor="@color/text_color"
+            android:textSize="25sp"
+            android:layout_gravity="center"
+            android:background="#ffffff"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:paddingLeft="10dp"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/reset"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="@string/reset"
+            android:textColor="@color/text_color_1"
+            android:textSize="20sp"
+            android:background="@drawable/game_btn_bg"
+            android:layout_gravity="center"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="7dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_height="60dp" />
+
+    </LinearLayout>
+
+</LinearLayout>
