@@ -9,7 +9,20 @@
         android:id="@+id/navigation_home"
         android:name="com.example.myapplication.ui.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_timeFragment"
+            app:destination="@+id/navigation_time" />
+        <action
+            android:id="@+id/action_homeFragment_to_gameActivity"
+            app:destination="@+id/navigation_game" />
+        <action
+            android:id="@+id/action_homeFragment_to_musicActivity"
+            app:destination="@+id/navigation_music" />
+        <action
+            android:id="@+id/action_homeFragment_to_weatherActivity"
+            app:destination="@+id/navigation_weather" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_time"

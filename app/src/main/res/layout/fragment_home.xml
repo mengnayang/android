@@ -9,32 +9,83 @@
     android:id="@+id/fragment_home"
     tools:context=".ui.home.HomeFragment">
 
-    <Button
-        android:id="@+id/btn_time"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="计时器"
-        tools:layout_editor_absoluteX="82dp"
-        tools:layout_editor_absoluteY="108dp" />
-    <Button
-        android:id="@+id/btn_game"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="玩游戏"
-        tools:layout_editor_absoluteX="82dp"
-        tools:layout_editor_absoluteY="108dp" />
-    <Button
-        android:id="@+id/btn_music"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="听音乐"
-        tools:layout_editor_absoluteX="82dp"
-        tools:layout_editor_absoluteY="108dp" />
-    <Button
-        android:id="@+id/btn_weather"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="看天气"
-        tools:layout_editor_absoluteX="82dp"
-        tools:layout_editor_absoluteY="108dp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:paddingLeft="-20dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/home_textView"
+            android:layout_width="400dp"
+            android:layout_height="400dp"
+            android:gravity="center"
+            android:background="@drawable/home_home_bg"
+            android:textSize="60dp"
+            android:text="Final work"/>
+    </LinearLayout>
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="120dp"-->
+<!--        android:orientation="vertical">-->
+<!--        <Button-->
+<!--            android:id="@+id/btn_home"-->
+<!--            android:layout_width="120dp"-->
+<!--            android:layout_height="120dp"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:background="@drawable/home_home_bg"-->
+<!--            android:text="@string/home_home"-->
+<!--            android:textColor="@color/selected_color_text"-->
+<!--            android:textSize="25sp"/>-->
+<!--    </LinearLayout>-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_time"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:background="@drawable/home_time_bg"
+            android:text="@string/home_time"
+            android:textColor="@color/selected_color_text"
+            android:textSize="25sp"/>
+
+        <Button
+            android:id="@+id/btn_game"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginLeft="120dp"
+            android:background="@drawable/home_game_bg"
+            android:text="@string/home_game"
+            android:textSize="25sp"
+            android:textColor="@color/selected_color_text" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:orientation="horizontal"
+        android:gravity="center">
+        <Button
+            android:id="@+id/btn_music"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginRight="30dp"
+            android:background="@drawable/home_music_bg"
+            android:text="@string/home_music"
+            android:textSize="25sp"
+            android:textColor="@color/selected_color_text" />
+
+        <Button
+            android:id="@+id/btn_weather"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:background="@drawable/home_weather_bg"
+            android:text="@string/home_weather"
+            android:textSize="25sp"
+            android:textColor="@color/selected_color_text" />
+    </LinearLayout>
+
 </LinearLayout>

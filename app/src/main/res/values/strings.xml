@@ -14,4 +14,9 @@
     <string name="music_stop">停止播放</string>
     <string name="Score">得分：</string>
     <string name="reset">重置</string>
+    <string name="home_home">安卓</string>
+    <string name="home_time">计时器</string>
+    <string name="home_game">玩游戏</string>
+    <string name="home_music">听音乐</string>
+    <string name="home_weather">看天气</string>
 </resources>

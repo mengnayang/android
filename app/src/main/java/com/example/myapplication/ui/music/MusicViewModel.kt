@@ -3,10 +3,12 @@ package com.example.myapplication.ui.music
 import android.app.Application
 import android.media.MediaPlayer
 import android.os.Build
+import android.os.Handler
 import android.provider.MediaStore
 import android.util.Log
 import android.view.View
 import androidx.lifecycle.*
+import java.lang.Exception
 import kotlin.concurrent.thread
 
 
@@ -32,16 +34,27 @@ class MusicViewModel(application: Application) : AndroidViewModel(application) {
         getMusicList()
         _current.value = 0
         loadVideo()
+        runTimer()
+    }
 
-        //子线程
-        thread {
-            while (true) {
-                Thread.sleep(1000)
-                _currentPosition.postValue(mediaPlayer.currentPosition)
-                _max.postValue(mediaPlayer.duration)
+    fun runTimer() {
+        val handler = Handler()
+        val runnable = object :Runnable {
+            override fun run() {
+                if (!isPause) {
+                    try {
+                        _max.value = mediaPlayer.duration
+                        _currentPosition.value = mediaPlayer.currentPosition
+                    } catch (e:Exception) {
+                        mediaPlayer.release()
+                    }
+                }
+                handler.postDelayed(this, 1000)
             }
         }
+        handler.post(runnable)
     }
+
     private fun loadVideo() {
         mediaPlayer.apply{
             if (_musicList.value?.size == 0) return

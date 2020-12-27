@@ -6,7 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
@@ -37,40 +39,33 @@ class HomeFragment : Fragment() {
         homeViewModel =
                 ViewModelProvider(this).get(HomeViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_home, container, false)
-//        val textView: TextView = root.findViewById(R.id.text_home)
-//        homeViewModel.text.observe(viewLifecycleOwner, Observer {
-//            textView.text = it
-//        })
-
-        var mainActivity:MainActivity? = null
 
         val time:Button = root.findViewById(R.id.btn_time)
         time.setOnClickListener {
-//            Navigation.createNavigateOnClickListener(R.id.navigation_time, null)
-            NavHostFragment.findNavController(this)
-                .popBackStack(
-                    R.id.navigation_time,false
-                )
-//            mainActivity?.initTime()
-            Log.d("info","time")
+            NavHostFragment
+                .findNavController(this)
+                .navigate(R.id.action_homeFragment_to_timeFragment)
         }
 
         val game:Button = root.findViewById(R.id.btn_game)
         game.setOnClickListener {
-            mainActivity?.initGame()
-            Log.d("info","game")
+            NavHostFragment
+                .findNavController(this)
+                .navigate(R.id.action_homeFragment_to_gameActivity)
         }
 
         val music:Button = root.findViewById(R.id.btn_music)
         music.setOnClickListener {
-            mainActivity?.initMusic()
-            Log.d("info","music")
+            NavHostFragment
+                .findNavController(this)
+                .navigate(R.id.action_homeFragment_to_musicActivity)
         }
 
         val weather:Button = root.findViewById(R.id.btn_weather)
         weather.setOnClickListener {
-            mainActivity?.initWeather()
-            Log.d("info","weather")
+            NavHostFragment
+                .findNavController(this)
+                .navigate(R.id.action_homeFragment_to_weatherActivity)
         }
 
         return root
