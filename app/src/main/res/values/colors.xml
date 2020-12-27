@@ -9,9 +9,12 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="time_color">#393733</color>
-    <color name="time_bg">#45b787</color>
+    <color name="time_bg">#f2b9b2</color>
     <color name="music_bg">#93d5dc</color>
     <color name="btn_color">#495c69</color>
     <color name="text_color">#000000</color>
     <color name="text_color_1">#ffffff</color>
+    <color name="home_bg">#f2b9bf</color>
+    <color name="tarbar_bg_color">#f6cec1</color>
+    <color name="music_text_color">#1177b0</color>
 </resources>

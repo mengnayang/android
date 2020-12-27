@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/music_bg"
     android:orientation="vertical"
+    android:id="@+id/fragment_music"
     tools:context=".ui.music.MusicFragment">
 
     <ImageView
@@ -83,7 +84,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="30dp"
-        android:textColor="@color/black"
+        android:textColor="@color/music_text_color"
         android:textSize="20sp" />
 
     <TextView
@@ -92,11 +93,19 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:textSize="20sp"
-        android:textColor="@color/purple_700" />
+        android:textColor="@color/music_text_color" />
+
+    <TextView
+        android:id="@+id/textView_music_time"
+        android:layout_width="330dp"
+        android:layout_marginTop="20dp"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:textSize="15sp"
+        android:textColor="@color/music_text_color" />
 
     <SeekBar
-        android:id="@+id/seekBar"
+        android:id="@+id/music_seekBar"
         android:layout_width="match_parent"
-        android:layout_height="30dp" />
-
+        android:layout_height="wrap_content" />
 </LinearLayout>

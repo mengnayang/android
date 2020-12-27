@@ -10,15 +10,19 @@ import android.media.MediaPlayer
 import android.os.Build
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SeekBar
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
+import com.example.myapplication.MainActivity
 import com.example.myapplication.R
 import kotlinx.android.synthetic.main.fragment_music.*
+import kotlin.concurrent.thread
 
  //音乐播放功能
 //记得在清单中注册（私有权限）
@@ -27,22 +31,13 @@ import kotlinx.android.synthetic.main.fragment_music.*
 
     //初始化viewModel
     lateinit var viewModel: MusicViewModel
-//     //音乐播放器
-//     val mediaPlayer = MediaPlayer()
-//     //音乐列表
-//     val musicList = mutableListOf<String>()
-//     //音乐名称列表
-//     val musicNameList = mutableListOf<String>()
-//     //当前播放音乐索引
-//     var current = 0
-//     //监听暂停事件
-//     var isPause = false
-//
-//     //通知事件
-//     lateinit var notificationManager:NotificationManager
-//     lateinit var builder: Notification.Builder
-//     lateinit var pendingIntent:PendingIntent
-//
+
+
+     //通知事件
+     lateinit var notificationManager:NotificationManager
+     lateinit var builder: Notification.Builder
+     lateinit var pendingIntent:PendingIntent
+
     companion object {
         fun newInstance() = MusicFragment()
     }
@@ -56,13 +51,8 @@ import kotlinx.android.synthetic.main.fragment_music.*
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-//        viewModel = ViewModelProvider(this).get(MusicViewModel::class.java)
-//        viewModel = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application)).get(MusicViewModel::class.java)
         viewModel = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory(requireActivity().application)).get(MusicViewModel::class.java)
 
-        viewModel.progressBarVisibility.observe(viewLifecycleOwner, Observer {
-            seekBar.visibility = it;
-        })
 
         lifecycle.addObserver(viewModel.mediaPlayer) //感应生命周期
 
@@ -72,32 +62,39 @@ import kotlinx.android.synthetic.main.fragment_music.*
         } else {
             viewModel.getMusicList()
         }
-//
-//
-//        seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
-//            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-//                //用户是否触碰
-//                if (fromUser) {
-//                    mediaPlayer.seekTo(progress)
-//                }
-//            }
-//
-//            override fun onStartTrackingTouch(p0: SeekBar?) {
-//            }
-//
-//            override fun onStopTrackingTouch(p0: SeekBar?) {
-//            }
-//        })
-//
-//        //子线程
-//        thread {
-//            while (true) {
-//                Thread.sleep(1000)
-//                seekBar.max = mediaPlayer.duration
-//                seekBar.progress = mediaPlayer.currentPosition
-//            }
-//        }
-//
+
+        var max_length = 0
+        viewModel.max.observe(viewLifecycleOwner, Observer {
+            music_seekBar.max = it
+            max_length = it
+        })
+
+        viewModel.currentPosition.observe(viewLifecycleOwner, Observer {
+            music_seekBar.progress = it
+            var leave_length = max_length - it
+            val minute = leave_length / 60000
+            val second = leave_length % 60000 / 1000
+            textView_music_time.text = String.format("%02d:%02d", minute, second)
+        })
+
+
+
+
+        music_seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                //用户是否触碰
+                if (fromUser) {
+                    viewModel.mediaPlayer.seekTo(progress)
+                }
+            }
+
+            override fun onStartTrackingTouch(p0: SeekBar?) {
+            }
+
+            override fun onStopTrackingTouch(p0: SeekBar?) {
+            }
+        })
+
         music_btn_start.setOnClickListener {
             viewModel.start()
         }
@@ -118,33 +115,34 @@ import kotlinx.android.synthetic.main.fragment_music.*
             viewModel.next()
         }
 
-//        //返回音乐播放列表
-//        val intent = Intent(activity, MainActivity::class.java)
-//        pendingIntent = PendingIntent.getActivity(activity, 1, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+        //返回音乐播放列表
+        val intent = Intent(activity, MainActivity::class.java)
+        pendingIntent = PendingIntent.getActivity(activity, 1, intent, PendingIntent.FLAG_UPDATE_CURRENT)
 
+        //通知管理器
+        notificationManager = activity?.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val notificationChannel = NotificationChannel(ChannelID, "this is my music channel", NotificationManager.IMPORTANCE_DEFAULT)
+            notificationManager.createNotificationChannel(notificationChannel)
+            builder = Notification.Builder(activity, ChannelID)
+        } else {
+            builder = Notification.Builder(activity)
+        }
+
+        // 实时监听播放到哪一首
+        viewModel.current.observe(viewLifecycleOwner, Observer {
+            textView_music_count.text = "${it+1}/${viewModel.musicList.value?.size}"
+            textView_music_musicName.text = viewModel.musicNameList.value?.get(it)
+            val notification = builder.setSmallIcon(R.drawable.ic_launcher_foreground)
+                .setContentTitle("音乐播放列表")
+                .setContentText(viewModel.musicNameList.value?.get(it))
+                .setLargeIcon(BitmapFactory.decodeResource(resources,R.drawable.music_star))
+                .setContentIntent(pendingIntent)
+                .build()
+            notificationManager.notify(1, notification)
+        })
     }
 
-//
-//         //通知管理器
-//         notificationManager = activity?.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-//         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-//             val notificationChannel = NotificationChannel(ChannelID, "this is my music channel", NotificationManager.IMPORTANCE_DEFAULT)
-//             notificationManager.createNotificationChannel(notificationChannel)
-//             builder = Notification.Builder(activity, ChannelID)
-//         } else {
-//             builder = Notification.Builder(activity)
-//         }
-//
-//         val notification = builder.setSmallIcon(R.drawable.ic_launcher_foreground)
-//                 .setContentTitle("音乐播放列表")
-//                 .setContentText(musicNameList[current])
-//                 .setLargeIcon(BitmapFactory.decodeResource(resources,R.drawable.music_star))
-//                 .setContentIntent(pendingIntent)
-//                 .build()
-//
-//         notificationManager.notify(1, notification)
-//     }
-//
      override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
          super.onRequestPermissionsResult(requestCode, permissions, grantResults)
          viewModel.getMusicList()
