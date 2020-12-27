@@ -133,7 +133,7 @@ import kotlin.concurrent.thread
         viewModel.current.observe(viewLifecycleOwner, Observer {
             textView_music_count.text = "${it+1}/${viewModel.musicList.value?.size}"
             textView_music_musicName.text = viewModel.musicNameList.value?.get(it)
-            val notification = builder.setSmallIcon(R.drawable.ic_launcher_foreground)
+            val notification = builder.setSmallIcon(R.drawable.music_small_icon)
                 .setContentTitle("音乐播放列表")
                 .setContentText(viewModel.musicNameList.value?.get(it))
                 .setLargeIcon(BitmapFactory.decodeResource(resources,R.drawable.music_star))
