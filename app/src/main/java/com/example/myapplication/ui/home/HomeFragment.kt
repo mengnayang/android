@@ -26,11 +26,6 @@ class HomeFragment : Fragment() {
 
     private lateinit var homeViewModel: HomeViewModel
 
-    private var fg2: TimeFragment? = null
-    private var fg3: GameFragment? = null
-    private var fg4: MusicFragment? = null
-    private var fg5: WeatherFragment? = null
-
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
