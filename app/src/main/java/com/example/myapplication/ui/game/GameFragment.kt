@@ -81,6 +81,7 @@ class GameFragment : Fragment() {
         saveData()
     }
 
+    //保存数据
     fun saveData(){
         try {
             val outputStream = activity?.openFileOutput("gameData", Context.MODE_PRIVATE)
@@ -92,6 +93,8 @@ class GameFragment : Fragment() {
         }
     }
 
+
+    // 加载数据
     fun loadData(): CardMatchingGame?{
         try {
             val inputStream = activity?.openFileInput("gameData")
